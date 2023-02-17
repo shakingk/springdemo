@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="org.example.MyInstantiationAwareBeanPostProcessor" />
+
+    <bean id="user" class="org.example.model.User" init-method="myInit" destroy-method="myDestroy">
+        <!-- 构造函数注入 -->
+        <constructor-arg index="0" type="int">
+            <value>1</value>
+        </constructor-arg>
+        <constructor-arg index="1" type="java.lang.String">
+            <value>MyTest</value>
+        </constructor-arg>
+
+        <!-- setter方法注入 -->
+        <property name="id" value="2"/>
+        <property name="name" value="张三"></property>
+    </bean>
+
+    <bean class="org.example.MyBeanPostProcessor" />
+    <bean class="org.example.MyBeanFactoryPostProcessor" />
+</beans>
